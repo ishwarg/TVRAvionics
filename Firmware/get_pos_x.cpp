@@ -8,16 +8,16 @@ SFE_UBLOX_GNSS myGNSS;
 long pos_x()
 {
 //local vars
-long pos_x, 
+long pos_x; 
 long lon_diff;
 
-//get longitude from GPS
+//get longitude from GPS (degrees*10^-7)
 long longitude  = 10000000*myGNSS.getLongitude();
 
 lon_diff = longitude - initLong;
 
-//east and north positive
-pos_x = rad_earth*long_diff;
+//east positive
+pos_x = rad_earth*lon_diff;
 return pos_x;
 }
 

@@ -4,20 +4,20 @@
 SFE_UBLOX_GNSS myGNSS;
 
 #define initLat 100;
-//#define initLat 100;
+
 #define rad_earth 6365172; //in meters
 
 long pos_y()
 {
-long pos_y, 
+long pos_y;
 long lat_diff;
 
-//get longitude from GPS
+//get latitude from GPS (degrees*10^-7)
 long longitude  = 10000000*myGNSS.getLongitude();
 
 lat_diff = latitude - initLat;
 
-//east and north positive
+//north positive
 pos_y = rad_earth*lat_diff;
 return pos_y;
 }
